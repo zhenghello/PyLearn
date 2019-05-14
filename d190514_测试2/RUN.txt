@@ -1,0 +1,8 @@
+notepad++ 配置一键保存+运行
+1. 打开notepad++，到“插件”-> plugin manager  -> show plugin manager , 找到NppExec，安装。
+
+2. 安装好以后， 到“插件” -> NppExec -> execute， 输入以下的内容
+
+NPP_SAVE
+cmd /k Python -u "$(FULL_CURRENT_PATH)" & ECHO. & PAUSE & EXIT
+NPP_CONSOLE 0
