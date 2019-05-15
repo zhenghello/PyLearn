@@ -1,0 +1,2 @@
+cd C:\Program Files\Python\Python35\Scripts
+pyinstaller -F  E:\PyLearn\d190515_2exe\hello.py
