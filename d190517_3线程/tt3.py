@@ -24,8 +24,8 @@ th2 = myT(2,'th2',5,1)
 
 th1.start()
 th2.start()
-th1.join()
-th2.join()
+#th1.join()
+#th2.join()
 print('退出主线程');
         
         
