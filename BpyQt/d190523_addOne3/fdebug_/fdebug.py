@@ -5,9 +5,9 @@ Module implementing Fdebug.
 郑凯鹏常用的显示窗体
 """
 
-from PyQt5.QtCore import pyqtSlot
+from PyQt5.QtCore import pyqtSlot, Qt
 from PyQt5.QtWidgets import QWidget
-
+from PyQt5.QtGui import QColor
 from Ui_fdebug import Ui_Fdebug
 
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -34,13 +34,33 @@ class Fdebug(QWidget, Ui_Fdebug):
         """
         self.show_count=0;  # 清空计数
         self.t_show.clear();# 清空显示
-        
+    
+    # 自定义函数
+    def setTextStyle(self, str, bcol, fcol, fontW):
+        """
+        界面显示字符串
+        """
+        if(str is None):
+            return;# 忽略空白内容
+        self.t_show.setTextBackgroundColor(bcol);
+        self.t_show.setTextColor(fcol);
+        self.t_show.setFontPointSize(fontW);
+        self.t_show.append (str);#这个指定用来显示调试信息的文本框
+        self.t_show.setTextBackgroundColor(QColor(255,255,255));
+        self.t_show.setTextColor(QColor(0,0,0));
+        self.t_show.setFontPointSize(8);
+
     def setText(self,str):
         """
         界面显示字符串
         """
         self.t_show.append("%d.%s"%(self.show_count, str))
         self.show_count+=1
+    def printf(self, arg, *args):
+        """
+        界面显示自定义字符串
+        """
+        self.t_show.append(arg % args)
     
 
 if __name__ == "__main__":
@@ -50,5 +70,9 @@ if __name__ == "__main__":
     w.show()
     
     w.setText("123456")
+    w.setTextStyle("nihao", Qt.yellow, Qt.red, 12)
     
+    print(Qt.yellow)
+    print(Qt.red)
+    w.printf("%d", 124)
     sys.exit(a.exec_())

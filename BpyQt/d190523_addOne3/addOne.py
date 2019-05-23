@@ -28,6 +28,12 @@ class addOne(QWidget, Ui_addOne):
         """
         super(addOne, self).__init__(parent)
         self.setupUi(self)
+        
+        # 内部初始化
+        zShow = fdebug();
+
+    
+    
     
     @pyqtSlot()
     def on_pushButton_clicked(self):
@@ -36,7 +42,7 @@ class addOne(QWidget, Ui_addOne):
         """
         self.count+=1
         self.label.setText(str(self.count))
-        
-        return
-    
-    zShow = fdebug();
+            
+
+
+
