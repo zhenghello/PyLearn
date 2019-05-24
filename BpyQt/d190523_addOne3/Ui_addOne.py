@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'E:\PyLearn\BpyQt\d190523_addOne2\addOne.ui'
+# Form implementation generated from reading ui file 'E:\PyLearn\BpyQt\d190523_addOne3\addOne.ui'
 #
 # Created by: PyQt5 UI code generator 5.11.3
 #
@@ -28,7 +28,7 @@ class Ui_addOne(object):
         self.verticalLayout.addWidget(self.pushButton_end)
 
         self.retranslateUi(addOne)
-        self.pushButton_end.clicked.connect(addOne.close)
+        self.pushButton_end.clicked.connect(addOne.deleteLater)
         QtCore.QMetaObject.connectSlotsByName(addOne)
 
     def retranslateUi(self, addOne):

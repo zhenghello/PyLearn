@@ -61,11 +61,11 @@
    <sender>pushButton_end</sender>
    <signal>clicked()</signal>
    <receiver>addOne</receiver>
-   <slot>close()</slot>
+   <slot>deleteLater()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>163</x>
-     <y>319</y>
+     <x>183</x>
+     <y>266</y>
     </hint>
     <hint type="destinationlabel">
      <x>385</x>
