@@ -7,7 +7,6 @@ Module implementing Fdebug.
 
 from PyQt5.QtCore   import pyqtSlot, Qt
 from PyQt5.QtWidgets import QWidget
-from PyQt5 import  QtWidgets
 from PyQt5.QtGui import QColor
 
 
@@ -71,6 +70,7 @@ class Fdebug(QWidget, Ui_Fdebug):
 # 调试自己的主函数代码---------------------------------------------------------------------begin
 if __name__ == "__main__":
     import sys
+    from PyQt5 import  QtWidgets
     a = QtWidgets.QApplication(sys.argv)
     w = Fdebug()
     w.show()

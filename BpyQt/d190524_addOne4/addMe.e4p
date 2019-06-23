@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric project file for project addMe -->
-<!-- Saved: 2019-05-24, 13:41:20 -->
+<!-- Saved: 2019-05-24, 15:36:36 -->
 <!-- Copyright (C) 2019 ,  -->
 <Project version="5.1">
   <Language>en_US</Language>
@@ -18,9 +18,16 @@
     <Source>addOne.py</Source>
     <Source>main.py</Source>
     <Source>main_path.py</Source>
+    <Source>zLib/fcom/Ui_fcom.py</Source>
+    <Source>zLib/fcom/fcom.py</Source>
+    <Source>zLib/fdebug/Ui_fdebug.py</Source>
+    <Source>zLib/fdebug/__init__.py</Source>
+    <Source>zLib/fdebug/fdebug.py</Source>
   </Sources>
   <Forms>
     <Form>addOne.ui</Form>
+    <Form>zLib/fcom/fcom.ui</Form>
+    <Form>zLib/fdebug/fdebug.ui</Form>
   </Forms>
   <Translations/>
   <Resources/>
