@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Tasks SYSTEM "Tasks-6.0.dtd">
+<!-- eric6 tasks file for project addMe -->
+<!-- Saved: 2019-07-06, 18:43:51 -->
+<Tasks version="6.0">
+  <ProjectScanFilter></ProjectScanFilter>
+  <Task priority="1" completed="False" type="1" uid="{9deeabdb-d576-4ed6-a53d-5309ba655365}">
+    <Summary>TODO: not implemented yet</Summary>
+    <Description></Description>
+    <Created>2019-07-06, 17:33:26</Created>
+    <Resource>
+      <Filename>zLib/fcom/fcom.py</Filename>
+      <Linenumber>99</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{40d23e4d-e376-4831-835a-83aba30c0321}">
+    <Summary>TODO: not implemented yet</Summary>
+    <Description></Description>
+    <Created>2019-07-06, 17:33:26</Created>
+    <Resource>
+      <Filename>zLib/fcom/fcom.py</Filename>
+      <Linenumber>107</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{cd43a912-a22f-450a-b20e-6d73c8df4687}">
+    <Summary>TODO: not implemented yet</Summary>
+    <Description></Description>
+    <Created>2019-07-06, 17:33:26</Created>
+    <Resource>
+      <Filename>zLib/fcom/fcom.py</Filename>
+      <Linenumber>115</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{3310b997-1c20-4373-bfe3-7b176e268ebc}">
+    <Summary>TODO: not implemented yet</Summary>
+    <Description></Description>
+    <Created>2019-07-06, 17:33:26</Created>
+    <Resource>
+      <Filename>zLib/fcom/fcom.py</Filename>
+      <Linenumber>123</Linenumber>
+    </Resource>
+  </Task>
+</Tasks>
