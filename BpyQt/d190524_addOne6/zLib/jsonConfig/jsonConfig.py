@@ -14,11 +14,11 @@ class configFile():
     def set(self, key, vlaue):
         self.dat[key] = vlaue;
         
-    def get(self, key):
+    def get(self, key, default_value): # 如果没有值，就返回默认值
         try:
             value = self.dat[key];
         except:
-            value = None;
+            value = default_value;
         return value;
         
     def save(self):

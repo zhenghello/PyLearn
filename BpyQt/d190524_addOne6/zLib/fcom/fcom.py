@@ -150,10 +150,10 @@ class Fcom(QWidget, Ui_Fcom):
         cfg.set('serial_Parity.currentIndex'      , self.serial_Parity.currentIndex())
         cfg.set('serial_send.text'                , self.serial_send.text())
         
-        cfg.set('check_hex_send.checked'          , self.check_hex_send.checked())
-        cfg.set('check_new_line.checked'          , self.check_new_line.checked())
-        cfg.set('check_show_hex.checked'          , self.check_show_hex.checked())
-        cfg.set('check_hide.checked'              , self.check_hide.checked())
+        cfg.set('check_hex_send.isChecked'          , self.check_hex_send.isChecked())
+        cfg.set('check_new_line.isChecked'          , self.check_new_line.isChecked())
+        cfg.set('check_show_hex.isChecked'          , self.check_show_hex.isChecked())
+        cfg.set('check_hide.isChecked'              , self.check_hide.isChecked())
 
         cfg.save()
 
@@ -163,16 +163,16 @@ class Fcom(QWidget, Ui_Fcom):
         """
         cfg = configFile('./zConfig/AllConfig.json');
         # 开始读取要导入的数据
-        self.serial_BaudRate.setCurrentIndex(cfg.get('serial_BaudRate.currentIndex'))
-        self.serial_DataBits.setCurrentIndex(cfg.get('serial_DataBits.currentIndex'))
-        self.serial_StopBits.setCurrentIndex(cfg.get('serial_StopBits.currentIndex'))
-        self.serial_Parity.setCurrentIndex(cfg.get('serial_Parity.currentIndex'))
-        self.serial_send.setText(cfg.get('serial_send.text'))
+        self.serial_BaudRate.setCurrentIndex(cfg.get('serial_BaudRate.currentIndex', 0))
+        self.serial_DataBits.setCurrentIndex(cfg.get('serial_DataBits.currentIndex', 0))
+        self.serial_StopBits.setCurrentIndex(cfg.get('serial_StopBits.currentIndex', 0))
+        self.serial_Parity.setCurrentIndex(cfg.get('serial_Parity.currentIndex', 0))
+        self.serial_send.setText(cfg.get('serial_send.text', '*'))
 
-        self.check_hex_send.setChecked(cfg.get('check_hex_send.checked'))
-        self.check_new_line.setChecked(cfg.get('check_new_line.checked'))
-        self.check_show_hex.setChecked(cfg.get('check_show_hex.checked'))
-        self.check_hide.setChecked(cfg.get('check_hide.checked'))
+        self.check_hex_send.setChecked(cfg.get('check_hex_send.isChecked', False))
+        self.check_new_line.setChecked(cfg.get('check_new_line.isChecked', False))
+        self.check_show_hex.setChecked(cfg.get('check_show_hex.isChecked', False))
+        self.check_hide.setChecked(cfg.get('check_hide.isChecked', False))
 
 
 
