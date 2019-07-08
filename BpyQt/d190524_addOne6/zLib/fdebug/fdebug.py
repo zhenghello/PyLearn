@@ -13,8 +13,6 @@ from PyQt5.QtGui     import QColor
 
 import time  #时间模块
 
-#import sys
-#sys.path.append("../fdebug_/")
 from Ui_fdebug import Ui_Fdebug
 
 

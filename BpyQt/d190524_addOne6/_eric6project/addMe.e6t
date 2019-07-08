@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Tasks SYSTEM "Tasks-6.0.dtd">
 <!-- eric6 tasks file for project addMe -->
-<!-- Saved: 2019-07-06, 18:43:51 -->
+<!-- Saved: 2019-07-08, 21:17:01 -->
 <Tasks version="6.0">
   <ProjectScanFilter></ProjectScanFilter>
-  <Task priority="1" completed="False" type="1" uid="{9deeabdb-d576-4ed6-a53d-5309ba655365}">
+  <Task priority="1" completed="False" type="1" uid="{45cc9694-7226-4f5c-85f5-145bb5ebc62d}">
     <Summary>TODO: not implemented yet</Summary>
     <Description></Description>
-    <Created>2019-07-06, 17:33:26</Created>
+    <Created>2019-07-08, 21:08:52</Created>
     <Resource>
       <Filename>zLib/fcom/fcom.py</Filename>
-      <Linenumber>99</Linenumber>
+      <Linenumber>113</Linenumber>
     </Resource>
   </Task>
-  <Task priority="1" completed="False" type="1" uid="{40d23e4d-e376-4831-835a-83aba30c0321}">
+  <Task priority="1" completed="False" type="1" uid="{02ba9519-180b-4b07-bbf7-967b1053215e}">
     <Summary>TODO: not implemented yet</Summary>
     <Description></Description>
-    <Created>2019-07-06, 17:33:26</Created>
+    <Created>2019-07-08, 21:08:52</Created>
     <Resource>
       <Filename>zLib/fcom/fcom.py</Filename>
-      <Linenumber>107</Linenumber>
+      <Linenumber>121</Linenumber>
     </Resource>
   </Task>
-  <Task priority="1" completed="False" type="1" uid="{cd43a912-a22f-450a-b20e-6d73c8df4687}">
+  <Task priority="1" completed="False" type="1" uid="{27fc2416-1d78-444e-9039-89b8273ee549}">
     <Summary>TODO: not implemented yet</Summary>
     <Description></Description>
-    <Created>2019-07-06, 17:33:26</Created>
+    <Created>2019-07-08, 21:08:52</Created>
     <Resource>
       <Filename>zLib/fcom/fcom.py</Filename>
-      <Linenumber>115</Linenumber>
+      <Linenumber>129</Linenumber>
     </Resource>
   </Task>
-  <Task priority="1" completed="False" type="1" uid="{3310b997-1c20-4373-bfe3-7b176e268ebc}">
+  <Task priority="1" completed="False" type="1" uid="{068a0d7b-4710-4022-a8cb-387ef56bd048}">
     <Summary>TODO: not implemented yet</Summary>
     <Description></Description>
-    <Created>2019-07-06, 17:33:26</Created>
+    <Created>2019-07-08, 21:08:52</Created>
     <Resource>
       <Filename>zLib/fcom/fcom.py</Filename>
-      <Linenumber>123</Linenumber>
+      <Linenumber>137</Linenumber>
     </Resource>
   </Task>
 </Tasks>

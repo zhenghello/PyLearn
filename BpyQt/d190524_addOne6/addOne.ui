@@ -30,6 +30,9 @@
     <number>5</number>
    </property>
    <item>
+    <layout class="QHBoxLayout" name="horizontalLayout"/>
+   </item>
+   <item>
     <widget class="QLineEdit" name="lineEdit"/>
    </item>
    <item>

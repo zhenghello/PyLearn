@@ -3,6 +3,11 @@
 """
 Module implementing addOne.
 """
+# 导入模块路径 --------------------------------------------后期删除
+#import sys
+#sys.path.append('../../') 
+import main_path
+main_path.path_append();  #导入路径
 
 #from PyQt5.QtCore import QCoreApplication
 
@@ -14,13 +19,14 @@ from PyQt5 import  QtWidgets
 
 from Ui_addOne import Ui_addOne
 
-# 导入模块路径 --------------------------------------------begin
-import main_path
-main_path.path_append();  #导入路径
+
 
 
 from fdebug import  Fdebug
 from jsonConfig import configFile
+from fcom import Fcom
+
+
 class addOne(QWidget, Ui_addOne):
     """
     Class documentation goes here.
@@ -40,7 +46,14 @@ class addOne(QWidget, Ui_addOne):
         # 内部自定义初始化操作 ---------------------------------------------------------------------begin
         self.zShow = Fdebug(self);
         self.zShow.show();
-        self.verticalLayout.insertWidget(0, self.zShow)
+        self.horizontalLayout.insertWidget(0, self.zShow)
+        
+        self.zCom = Fcom(self);
+        self.zCom.show();
+        self.horizontalLayout.insertWidget(0, self.zCom)
+        
+        self.setMinimumWidth(1200) #设置最小宽度
+        
         self.__dat_config_load();  #导入配置
     
     def closeEvent(self, event):

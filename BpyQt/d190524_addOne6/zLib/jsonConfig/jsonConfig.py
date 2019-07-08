@@ -9,9 +9,7 @@ class configFile():
             #print ("原始配置：", repr(self.dat)) #调试用
         except:
             self.dat ={};
-            print("导入数据错误");
-    def __del__(self):
-        print('configFile del')
+            print("E:json导入，导入数据错误");
         
     def set(self, key, vlaue):
         self.dat[key] = vlaue;
@@ -20,7 +18,7 @@ class configFile():
         try:
             value = self.dat[key];
         except:
-            value = 0;
+            value = None;
         return value;
         
     def save(self):
@@ -28,5 +26,5 @@ class configFile():
             with open(self.path, 'w') as f:
                 json.dump(self.dat, f)
         except:
-            print("路径错误！")
+            print("E:json导出，路径错误！")
         
