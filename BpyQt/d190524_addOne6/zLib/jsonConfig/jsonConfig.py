@@ -25,6 +25,7 @@ class configFile():
         try:
             with open(self.path, 'w') as f:
                 json.dump(self.dat, f)
+            print("D:保存配置")
         except:
             print("E:json导出，路径错误！")
         

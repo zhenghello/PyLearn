@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'E:\PyLearn\BpyQt\d190524_addOne5\zLib\fcom\fcom.ui'
+# Form implementation generated from reading ui file 'E:\PyLearn\BpyQt\d190524_addOne6\zLib\fcom\fcom.ui'
 #
 # Created by: PyQt5 UI code generator 5.11.3
 #
@@ -91,10 +91,40 @@ class Ui_Fcom(object):
         self.pushButton_open.setSizePolicy(sizePolicy)
         self.pushButton_open.setMinimumSize(QtCore.QSize(40, 20))
         self.pushButton_open.setMaximumSize(QtCore.QSize(1000, 100))
+        palette = QtGui.QPalette()
+        brush = QtGui.QBrush(QtGui.QColor(200, 200, 200))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(200, 200, 200))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(200, 200, 200))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(200, 200, 200))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(200, 200, 200))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(200, 200, 200))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(200, 200, 200))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(200, 200, 200))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(200, 200, 200))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Window, brush)
+        self.pushButton_open.setPalette(palette)
         font = QtGui.QFont()
         font.setFamily("新宋体")
         font.setPointSize(8)
         self.pushButton_open.setFont(font)
+        self.pushButton_open.setAutoFillBackground(False)
         self.pushButton_open.setStyleSheet("background-color: rgb(200, 200, 200);")
         self.pushButton_open.setObjectName("pushButton_open")
         self.gridLayout_8.addWidget(self.pushButton_open, 0, 2, 2, 1)

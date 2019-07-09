@@ -15,8 +15,8 @@ if __name__ == "__main__":
 
 
 
-from PyQt5.QtCore    import pyqtSlot, Qt
-from PyQt5.QtWidgets import QWidget
+from PyQt5.QtCore    import *
+from PyQt5.QtWidgets import *
 from Ui_fcom import Ui_Fcom
 
 # 调用的模块
@@ -25,17 +25,17 @@ from jsonConfig import configFile   # 用于保存配置模块
 
 import serial                     #串口模块
 import serial.tools.list_ports    #当前串口列表
-
-
+import threading
+import time
 
 class Fcom(QWidget, Ui_Fcom):
     """
     串口窗体模块，
     """
+    serial_read_line = pyqtSignal(str) #接收到字符串的信号
     def __init__(self, parent=None):
         """
         Constructor
-        
         @param parent reference to the parent widget
         @type QWidget
         """
@@ -43,16 +43,33 @@ class Fcom(QWidget, Ui_Fcom):
         self.setupUi(self)      #
         # 内部自定义初始化操作 ---------------------------------------------------------------------begin
         #self.setWindowFlags(self.windowFlags()|Qt.Window); #设置为从类
-        self.uart=serial.Serial() # 串口对象创建
+        self.uart=serial.Serial()         # 串口对象创建
+        self.uartRun=serialRun(self, self.uart) # 串口运行对象        
+        self.uartRun.serial_read_line.connect(self.__serial2debug)
+        
         self.myshow=Fdebug(self, hide_key=True)  # 创建显示对象模块fdebug,并且隐藏按键
         self.verticalLayout_main.insertWidget(0, self.myshow) #模块放到框体内
         self.myshow.show()
         self.myshow.clear()
         self.myshow.printf("串口模块")
+
+        self.on_pushButton_com_num_clicked() # 获取当前可用串口
         self.__dat_config_load();  #导入配置
     
     def closeEvent(self, event):
         self.__dat_config_save();  #保存配置
+    def __serial2debug(self, in_bytes):
+        if self.check_show_hex.isChecked() == False :
+            str=in_bytes.decode(encoding='gb2312') # 先解码
+            str2 = str.replace('\r\n', '')# 去掉换行符号
+            self.myshow.printf(str2)
+        else:
+            print('打印hex')
+            str = ''.join(['%02x '%c for c in in_bytes])
+            self.myshow.printf(str)
+            
+            
+        
         
     @pyqtSlot()
     def on_pushButton_open_clicked(self):
@@ -81,18 +98,22 @@ class Fcom(QWidget, Ui_Fcom):
             self.uart.timeout  = 0.1                                           # 超时时间
             try:
                 self.uart.open()
+                
                 self.pushButton_open.setText("关闭")
                 self.myshow.setTextStyle("打开串口成功", Qt.white, Qt.green, 12)
-
+                self.pushButton_open.setStyleSheet("background-color: rgb(255, 0, 127);")# 红色
+                self.uartRun.start() # 持续读取串口
             except:
                 #打开串口失败的操作
                 self.uart.close()
                 self.myshow.setTextStyle("打开串口失败", Qt.white, Qt.red, 12)
+                self.pushButton_open.setStyleSheet("background-color: rgb(0, 255, 127);") # 绿色
         else:
+            self.uartRun.stop() #关闭读取串口
             self.uart.close()
             self.pushButton_open.setText("打开")
             self.myshow.setTextStyle("关闭串口", Qt.white, Qt.red, 12)
-
+            self.pushButton_open.setStyleSheet("background-color: rgb(0, 255, 127);") # 绿色
 
     @pyqtSlot()
     def on_pushButton_com_num_clicked(self):
@@ -175,8 +196,31 @@ class Fcom(QWidget, Ui_Fcom):
         self.check_hide.setChecked(cfg.get('check_hide.isChecked', False))
 
 
+class serialRun(QThread):
+    '''
+    使用Qtpy5的线程读取串口数据
+    '''    
+    serial_read_line = pyqtSignal(bytes) #接收到字符串的信号,发送的信号是bytes
+
+    def __init__(self, parent, uart):
+        super(serialRun, self).__init__(parent)
+        self.uart = uart
+    def run(self):
+        self.flag = True
+        while self.flag:
+            if self.uart.inWaiting() :
+                time.sleep(0.02)
+                try:
+                    in_bytes = self.uart.readline() # 读取数据
+                    # 串口数据处理在这里，如果没有特殊要操作的，就直接发送出去了
+                    self.serial_read_line.emit(in_bytes)
+                    #print(in_bytes) #调试打印串口信息
+                except:
+                    print("读取串口出错") #调试打印串口信息
 
 
+    def stop(self):
+        self.flag = False
         
 # 调试自己的主函数代码---------------------------------------------------------------------begin
 if __name__ == "__main__":
