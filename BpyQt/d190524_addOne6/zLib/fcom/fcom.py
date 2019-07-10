@@ -25,7 +25,6 @@ from jsonConfig import configFile   # 用于保存配置模块
 
 import serial                     #串口模块
 import serial.tools.list_ports    #当前串口列表
-import threading
 import time
 
 class Fcom(QWidget, Ui_Fcom):
@@ -45,32 +44,65 @@ class Fcom(QWidget, Ui_Fcom):
         #self.setWindowFlags(self.windowFlags()|Qt.Window); #设置为从类
         self.uart=serial.Serial()         # 串口对象创建
         self.uartRun=serialRun(self, self.uart) # 串口运行对象        
-        self.uartRun.serial_read_line.connect(self.__serial2debug)
+        self.uartRun.serial_read_line.connect(self.__serial2myshow)
         
         self.myshow=Fdebug(self, hide_key=True)  # 创建显示对象模块fdebug,并且隐藏按键
         self.verticalLayout_main.insertWidget(0, self.myshow) #模块放到框体内
         self.myshow.show()
         self.myshow.clear()
         self.myshow.printf("串口模块")
-
+        # 修改收发次数
+        self.sendCount = 0; 
+        self.receCount = 0;
+        self.label_sen_count.setText(str(self.sendCount))
+        self.label_rec_count.setText(str(self.receCount))
+        
         self.on_pushButton_com_num_clicked() # 获取当前可用串口
         self.__dat_config_load();  #导入配置
     
     def closeEvent(self, event):
         self.__dat_config_save();  #保存配置
-    def __serial2debug(self, in_bytes):
+    def __serial2myshow(self, in_bytes):
+        '''
+        串口数据转到界面显示
+        '''
         if self.check_show_hex.isChecked() == False :
-            str=in_bytes.decode(encoding='gb2312') # 先解码
-            str2 = str.replace('\r\n', '')# 去掉换行符号
+            myStr=in_bytes.decode(encoding='gb2312') # 先解码
+            str2 = myStr.replace('\r\n', '')# 去掉换行符号
             self.myshow.printf(str2)
         else:
-            print('打印hex')
-            str = ''.join(['%02x '%c for c in in_bytes])
-            self.myshow.printf(str)
-            
-            
-        
-        
+            myStr = ''.join(['%02x '%c for c in in_bytes])
+            self.myshow.printf(myStr)
+        self.receCount = self.receCount+1;
+        self.label_rec_count.setText(str(self.receCount))    
+    def serial_write(self, myStr, isHex, isNewLine):
+        # 0.判断串口打开
+        if self.uart.isOpen() == False :
+            self.myshow.setTextStyle("串口没打开", Qt.white, Qt.red, 10)
+            return ;
+        # 1.判断空发送行
+        if myStr == None:
+            self.myshow.setTextStyle("输入字符串空", Qt.white, Qt.red, 10)
+            return ;
+        if isinstance(myStr, str) == False:
+            self.myshow.printf("输入类型：%s", type(myStr))
+            self.myshow.setTextStyle("输入不是字符串", Qt.white, Qt.red, 10)
+            return ;
+        # 2.判断hex发送
+        if isHex:
+            #myStrList = myStr.split( ) #空格分割
+            myByte = bytes.fromhex(myStr)    
+            print(myByte)
+            self.uart.write(myByte)
+        else:
+        # 3.判断发送新行
+            if isNewLine:
+                myStr = myStr+"\r\n"
+                self.uart.write(myStr.encode())
+            else:
+                self.uart.write(myStr.encode())
+        self.sendCount = self.sendCount+1;
+        self.label_sen_count.setText(str(self.sendCount))
     @pyqtSlot()
     def on_pushButton_open_clicked(self):
         """
@@ -137,10 +169,9 @@ class Fcom(QWidget, Ui_Fcom):
     @pyqtSlot()
     def on_pushButton_send_clicked(self):
         """
-        Slot documentation goes here.
+        点击发送串口数据
         """
-        # TODO: not implemented yet
-        raise NotImplementedError
+        self.serial_write(self.serial_send.text(), self.check_hex_send.isChecked(), self.check_new_line.isChecked())
     
     @pyqtSlot()
     def on_pushButton_load_clicked(self):
@@ -153,10 +184,13 @@ class Fcom(QWidget, Ui_Fcom):
     @pyqtSlot()
     def on_pushButton_clear_clicked(self):
         """
-        Slot documentation goes here.
+        清除显示和收发参数
         """
-        # TODO: not implemented yet
-        raise NotImplementedError
+        self.myshow.clear()
+        self.sendCount = 0; #修改次数
+        self.receCount = 0;
+        self.label_sen_count.setText(str(self.sendCount))
+        self.label_rec_count.setText(str(self.receCount))
 
     # ************************** 内部函数 **************************
     def __dat_config_save(self):
