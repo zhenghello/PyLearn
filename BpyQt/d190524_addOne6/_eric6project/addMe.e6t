@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Tasks SYSTEM "Tasks-6.0.dtd">
+<!-- eric6 tasks file for project addMe -->
+<!-- Saved: 2019-07-10, 20:08:00 -->
+<Tasks version="6.0">
+  <ProjectScanFilter></ProjectScanFilter>
+  <Task priority="1" completed="False" type="1" uid="{d630e274-4c4b-4457-97e9-b40b8b059721}">
+    <Summary>TODO: not implemented yet</Summary>
+    <Description></Description>
+    <Created>2019-07-10, 20:06:14</Created>
+    <Resource>
+      <Filename>zLib/fcom/fcom.py</Filename>
+      <Linenumber>166</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{804a9443-b6e4-43a2-a216-ed624d60d06f}">
+    <Summary>TODO: not implemented yet</Summary>
+    <Description></Description>
+    <Created>2019-07-10, 20:06:14</Created>
+    <Resource>
+      <Filename>zLib/fcom/fcom.py</Filename>
+      <Linenumber>181</Linenumber>
+    </Resource>
+  </Task>
+</Tasks>
